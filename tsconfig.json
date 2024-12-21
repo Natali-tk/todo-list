@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "useDefineForClassFields": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "module": "esnext",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    /* Bundler mode */
+    // "moduleResolution": "bundler",
+    "moduleResolution": "node",
+    // "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client"],
+    /* Linting */
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Path */
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "shared/*": ["src/shared/*"],
+      "entities/*": ["src/entities/*"],
+      "features/*": ["src/features/*"],
+      "widgets/*": ["src/widgets/*"],
+      "pages/*": ["src/pages/*"],
+      "processes/*": ["src/processes/*"],
+      "app/*": ["src/app/*"],
+      "store/*": ["src/store/*"],
+      "components/*": [
+        "src/components/*"
+      ]
+    }
+  },
+  "include": ["src", "types/vite-env.d.ts"],
+  "exclude": ["node_modules"],
+  "files": ["custom.d.ts"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
