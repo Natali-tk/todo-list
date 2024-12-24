@@ -16,12 +16,12 @@ interface TodoSearchProps {
 
 const TodoSearch = ({ wordEntered, setWordEntered }: TodoSearchProps) => {
   const input = useInputSearch();
-  const { data: todoList, isLoading, isError, error } = useGetTodoListQuery();
+  // const { data: todoList, isLoading, isError, error } = useGetTodoListQuery();
   const debounced = useDebounce(input.value);
   const [todos, setTodos] = useState(
-    localStorage.getItem("todos")
-      ? JSON.parse(localStorage.getItem("todos")!)
-      : []
+    localStorage.getItem("todos")?
+       JSON.parse(localStorage.getItem("todos")!):[]
+      
   );
   const [dropdown, setDropdown] = useState(false);
 
@@ -38,9 +38,7 @@ const TodoSearch = ({ wordEntered, setWordEntered }: TodoSearchProps) => {
     }
   }, [debounced]);
 
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todoList));
-  }, [todos]);
+ 
 
 
   return (
