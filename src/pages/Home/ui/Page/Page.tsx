@@ -1,17 +1,12 @@
 import Loading from "@/components/loading/Loading";
 import TodoSearch from "@/components/todoSearch/TodoSearch";
 import TodosList from "@/components/todosList/TodosList";
+import { initialArr } from "@/configs/config";
 import { useGetTodoListQuery } from "@/store/slices/todosSlice";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
-const initialArr = [{
-  id: uuidv4(),
-  title: "",
-  description: "",
-  completed: false,
-}]
+
 
 const Home = () => {
   // const { data: todoList, isLoading, isError, error } = useGetTodoListQuery();

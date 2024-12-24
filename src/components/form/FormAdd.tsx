@@ -1,25 +1,23 @@
 import { useAddTodoMutation } from "@/store/slices/todosSlice";
 import { Icon } from "@iconify/react";
-import {  useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "../button";
 import { useTheme } from "@/context/Theme/Theme";
 import { TodoInterface } from "../todosList/types";
+import { initialArr } from "@/configs/config";
 
-const initialArr = [{
-  id: uuidv4(),
-  title: "",
-  description: "",
-  completed: false,
-}]
 export const FormAdd = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
   const navigate = useNavigate();
   const { theme } = useTheme();
-  const [todos, setTodos] = useState<TodoInterface[]>(localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")!) : initialArr);
-
+  const [todos, setTodos] = useState<TodoInterface[]>(
+    localStorage.getItem("todos")
+      ? JSON.parse(localStorage.getItem("todos")!)
+      : initialArr
+  );
 
   // const [addTodo, data] = useAddTodoMutation();
 
@@ -31,19 +29,16 @@ export const FormAdd = () => {
       description: newDesc ? newDesc : "",
       completed: false,
     };
-      const newArr = [...todos,newAdd]
-      setTodos(newArr);
-      localStorage.setItem("todos", JSON.stringify(newArr));
-      // addTodo(newAdd);
-    
+    const newArr = [...todos, newAdd];
+    setTodos(newArr);
+    localStorage.setItem("todos", JSON.stringify(newArr));
+    // addTodo(newAdd);
+
     navigate(`/`);
     setNewTitle("");
     setNewDesc("");
   };
- 
 
-
-  
   return (
     <form
       onSubmit={handleSubmit}
